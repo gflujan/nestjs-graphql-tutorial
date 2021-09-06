@@ -9,5 +9,15 @@ type Pet {
 }
 
 type Query {
+  fetchPet(id: Int!): Pet!
   fetchAllPets: [Pet!]!
+}
+
+type Mutation {
+  createPet(createPetInput: CreatePetInput!): Pet!
+}
+
+input CreatePetInput {
+  name: String!
+  type: String
 }
