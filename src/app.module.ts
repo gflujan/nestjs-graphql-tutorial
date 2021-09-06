@@ -4,9 +4,10 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 // Context / Store / Router
-// Components / Classes
+// Components / Classes / Controllers / Services
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { OwnersModule } from './owners/owners.module';
 import { PetsModule } from './pets/pets.module';
 // Assets
 // Constants / Models / Interfaces / Types
@@ -25,6 +26,7 @@ import { PetsModule } from './pets/pets.module';
          synchronize: true, // this option is best used for POC's and in development; DO NOT USE THIS IN PRODUCTION; use `migrations` instead
       }),
       PetsModule,
+      OwnersModule,
    ],
    controllers: [AppController],
    providers: [AppService],

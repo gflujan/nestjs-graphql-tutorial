@@ -1,8 +1,8 @@
 // Packages
-import { Field, InputType } from '@nestjs/graphql';
-import { IsAlpha } from 'class-validator';
+import { Field, InputType, Int } from '@nestjs/graphql';
+import { IsAlpha, IsAlphanumeric, IsNumber } from 'class-validator';
 // Context / Store / Router
-// Components / Classes
+// Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
 // Utils / Methods / Mocks
@@ -14,8 +14,11 @@ export class CreatePetInput {
    @Field()
    public name: string;
 
+   @IsAlphanumeric()
    @Field({ nullable: true })
    public type?: string;
 
-   constructor() {}
+   @IsNumber() // is this overkill to do this? or would this provide type safety/validation during runtime?
+   @Field(type => Int)
+   public ownerId: number;
 }

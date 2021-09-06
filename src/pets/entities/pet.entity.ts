@@ -1,10 +1,11 @@
 // Packages
 import { Field, Int, ObjectType } from '@nestjs/graphql';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 // Context / Store / Router
-// Components / Classes
+// Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
+import { Owner } from 'src/owners/entities/owner.entity';
 // Utils / Methods / Mocks
 // Styles
 
@@ -22,6 +23,14 @@ export class Pet {
    @Column({ nullable: true })
    @Field({ nullable: true })
    public type?: string;
+
+   @Column()
+   @Field(type => Int)
+   public ownerId: number;
+
+   @ManyToOne(() => Owner, owner => owner.pets)
+   @Field(type => Owner)
+   public owner: Owner;
 
    constructor() {}
 }

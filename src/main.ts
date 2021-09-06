@@ -2,7 +2,7 @@
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 // Context / Store / Router
-// Components / Classes
+// Components / Classes / Controllers / Services
 import { AppModule } from './app.module';
 // Assets
 // Constants / Models / Interfaces / Types
